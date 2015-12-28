@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            	<!-- JSP -->
+            	<!-- List -->
+                <prop key="/listTracks.form">listController</prop>
+                <prop key="/listArtists.form">artistListController</prop>                  
+                <prop key="/listAlbums.form">albumListController</prop>
+                <prop key="/listMedias.form">mediaListController</prop>
+                <!-- Insert -->
+                <prop key="/insertTrack.form">insertTrackController</prop>
+                <prop key="/insertArtist.form">insertArtistController</prop>
+                <prop key="/insertAlbum.form">insertAlbumController</prop>
+                <!-- Delete --> 
+                <prop key="/deleteTrack.form">deleteTrackController</prop>
+                <prop key="/deleteArtist.form">deleteArtistController</prop>
+                <prop key="/deleteAlbum.form">deleteAlbumController</prop>
+                <!-- Update --> 
+                <prop key="/updateTrack.form">updateTrackController</prop>
+                <prop key="/updateArtist.form">updateArtistController</prop>
+                <prop key="/updateAlbum.form">updateAlbumController</prop>
+                <!-- Load -->  
+                <prop key="/loadTrack.form">loadTrackController</prop>
+                <prop key="/loadArtist.form">loadArtistController</prop>
+                <prop key="/loadAlbum.form">loadAlbumController</prop>              
+                <!-- XML -->
+            	<!-- List -->
+                <prop key="/listTracks.formx">listControllerx</prop>                
+                <prop key="/listMedias.formx">mediaListControllerx</prop>
+                <prop key="/listAlbums.formx">albumListControllerx</prop>              
+                <prop key="/listArtists.formx">artistListControllerx</prop>
+            </props>            
+        </property>
+    </bean>
+    <bean name="baseController" abstract="true">
+		<property name="error" value="error"/>
+		<property name="trackDAO" ref="trackDAO"/>
+		<property name="personDAO" ref="personDAO"/> 
+		<property name="albumDAO" ref="albumDAO"/> 
+		<property name="mediaDAO" ref="mediaDAO"/>
+	</bean>
+		<bean name="baseControllerx" abstract="true">
+		<property name="error" value="error"/>
+		<property name="trackDAO" ref="trackDAO"/>
+		<property name="personDAO" ref="personDAO"/> 
+		<property name="albumDAO" ref="albumDAO"/> 
+		<property name="mediaDAO" ref="mediaDAO"/>
+	</bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean> 
+    <bean name="listController"    class="com.redoddity.faml.controllers.list.TrackList" parent="baseController">
+        <property name="success"   value="trackList"/>
+    </bean>       
+    <bean name="albumListController"    class="com.redoddity.faml.controllers.list.AlbumList" parent="baseController">
+        <property name="success"   value="albumList"/>
+    </bean>
+    <bean name="insertAlbumController"    class="com.redoddity.faml.controllers.insert.InsertAlbum" parent="baseController">
+        <property name="success"   value="albumList"/>
+    </bean>
+     <bean name="deleteAlbumController"    class="com.redoddity.faml.controllers.delete.DeleteAlbum" parent="baseController">
+        <property name="success"   value="deleteAlbum"/>
+    </bean>
+    <bean name="loadAlbumController"    class="com.redoddity.faml.controllers.load.LoadAlbum" parent="baseController">
+        <property name="success"   value="loadAlbum"/>
+    </bean>
+      <bean name="updateAlbumController"    class="com.redoddity.faml.controllers.update.UpdateAlbum" parent="baseController">
+        <property name="success"   value="updateAlbum"/>
+    </bean>
+    <bean name="artistListController"    class="com.redoddity.faml.controllers.list.ArtistList" parent="baseController">
+        <property name="success"   value="artistList"/>
+    </bean>
+     <bean name="loadArtistController"    class="com.redoddity.faml.controllers.load.LoadArtist" parent="baseController">
+        <property name="success"   value="loadArtist"/>
+    </bean>
+    <bean name="deleteArtistController"    class="com.redoddity.faml.controllers.delete.KillArtist" parent="baseController">
+        <property name="success"   value="deleteArtist"/>
+    </bean>
+    <bean name="updateArtistController"    class="com.redoddity.faml.controllers.update.UpdateArtist" parent="baseController">
+        <property name="success"   value="updateArtist"/>
+    </bean>
+    <bean name="mediaListController"    class="com.redoddity.faml.controllers.list.MediaList" parent="baseController">
+        <property name="success"   value="mediaList"/>
+    </bean>
+     <bean name="insertTrackController"    class="com.redoddity.faml.controllers.insert.InsertTrack" parent="baseController">
+        <property name="success"   value="trackList"/>
+    </bean>
+    <bean name="insertArtistController"    class="com.redoddity.faml.controllers.insert.InsertArtist" parent="baseController">
+        <property name="success"   value="artistList"/>
+    </bean>
+    <bean name="deleteTrackController"    class="com.redoddity.faml.controllers.delete.DeleteTrack" parent="baseController">
+        <property name="success"   value="deleteTrack"/>
+    </bean>
+    <bean name="updateTrackController"    class="com.redoddity.faml.controllers.update.UpdateTrack" parent="baseController">
+        <property name="success"   value="updateTrack"/>
+    </bean>
+    <bean name="loadTrackController"    class="com.redoddity.faml.controllers.load.LoadTrack" parent="baseController">
+        <property name="success"   value="loadTrack"/>
+    </bean>
+    <!-- XML -->
+	     <bean name="listControllerx"    class="com.redoddity.faml.controllers.list.TrackList" parent="baseControllerx">
+        <property name="success"   value="trackListx"/>
+    </bean>
+     <bean name="albumListControllerx"    class="com.redoddity.faml.controllers.list.AlbumList" parent="baseControllerx">
+        <property name="success"   value="albumListx"/>
+    </bean>
+        <bean name="artistListControllerx"    class="com.redoddity.faml.controllers.list.ArtistList" parent="baseControllerx">
+        <property name="success"   value="artistListx"/>
+    </bean>
+         <bean name="mediaListControllerx"    class="com.redoddity.faml.controllers.list.MediaList" parent="baseControllerx">
+        <property name="success"   value="mediaListx"/>
+    </bean>          
+</beans>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/tracks/" targetNamespace="http://www.example.org/tracks/">
+    <element name="tracks" type="tns:track"></element>
+    
+    <complexType name="track">
+    	<complexContent>
+    		<extension base="tns:media">
+    			<sequence>
+    				<element name="length" type="long" />
+    				<element name="artistId" type="long" />
+
+    				<element name="lyrics" type="string" />
+    			</sequence>
+
+
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="media">
+    	<sequence>
+    		<element name="rating" type="int"></element>
+    		<element name="yr" type="int"></element>
+    		<element name="title" type="string"></element>
+    		<element name="relatedArticles" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="comments" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="genre" type="string"></element>
+    	</sequence>
+    	<attribute name="id" type="long"></attribute>
+    </complexType>
+
+    <complexType name="person">
+    	<sequence>
+    			<element name="name" type="string"></element>
+    			<element name="lastaname" type="string"></element>
+    			<element name="birthdate" type="string"></element>
+    			<element name="imageURL" type="string"></element>    			    			
+    	</sequence>
+    	<attribute name="id" type="long"></attribute>
+    </complexType>
+    <complexType name="artist">
+    	<complexContent>
+    		<extension base="tns:person">
+    			<sequence>
+    				<element name="stageName" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="artists" type="tns:artist"></element>
+    
+
+    <complexType name="artistGroup">
+    	<complexContent>
+    		<extension base="tns:artist">
+    			<sequence>
+    				<element name="components" type="tns:artist" maxOccurs="unbounded" minOccurs="1"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="albums" type="tns:album"></element>
+    
+    <complexType name="album">
+    	<sequence>
+    		<element name="title" type="string"></element>
+    		<element name="artist" type="tns:artist"></element>
+    		<element name="tracks" type="tns:track"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    		<element name="genre" type="string"></element>
+    		<element name="frontCover" type="string"></element>
+    	</sequence>
+    	<attribute name="id" type="long"></attribute>
+    </complexType>
+
+    <complexType name="director">
+    	<complexContent>
+    		<extension base="tns:person"></extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="movie">
+    	<complexContent>
+    		<extension base="tns:media">
+    			<sequence>
+    				<element name="director" type="tns:director"></element>
+    				<element name="minutesLength" type="int"></element>
+    				<element name="releaseDate" type="string"></element>
+    				<element name="plot" type="string"></element>
+    				<element name="coverImageURL" type="string"></element>
+    				<element name="cast" type="tns:person" maxOccurs="unbounded" minOccurs="1"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="picture">
+    	<complexContent>
+    		<extension base="tns:media">
+    			<sequence>
+    				<element name="height" type="int"></element>
+    				<element name="width" type="int"></element>
+    				<element name="size" type="int"></element>
+    				<element name="downloadedTimes" type="string"></element>
+    				<element name="tags" type="string"
+    					maxOccurs="unbounded" minOccurs="1">
+    				</element>
+    				<element name="photographer"
+    					type="tns:Photogtapher">
+    				</element>
+    				<element name="imageURL" type="string"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="Photogtapher">
+    	<complexContent>
+    		<extension base="tns:person">
+    			<sequence>
+    				<element name="numberOfPhotos" type="int"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <element name="movies" type="tns:movie"></element>
+</schema>

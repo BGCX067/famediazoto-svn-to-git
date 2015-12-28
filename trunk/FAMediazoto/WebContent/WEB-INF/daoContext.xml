@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean class="com.redoddity.faml.model.people.Artist" id="artist1">
+		<property name="id" value="1"/>
+		<property name="name" value="Francesco" />
+		<property name="lastname" value="Facchinetti" />
+		<property name="stageName" value="DJ Francesco" />
+	</bean>
+	<bean class="com.redoddity.faml.model.people.Artist" id="artist2">
+		<property name="id" value="52"/>
+		<property name="name" value="Lorenzo" />
+		<property name="lastname" value="Cherubini" />
+		<property name="stageName" value="Jovannotti" />
+	</bean>
+	<bean class="com.redoddity.faml.model.people.Artist" id="artist3">
+		<property name="id" value="3"/>
+		<property name="name" value="Pino" />
+		<property name="lastname" value="Lalavatrice" />
+		<property name="stageName" value="Pino Lalavatrice" />
+	</bean>
+	<bean class="com.redoddity.faml.model.people.ArtistGroup" id="Halloween">
+	    <property name="id" value="232"/>
+		<property name="stageName" value="Helloween" />
+		<property name="components">
+			<list>
+				<bean class="com.redoddity.faml.model.people.Artist">
+					<property name="id" value="120" />
+					<property name="name" value="Andi" />
+					<property name="lastname" value="Deris" />
+					<property name="stageName" value="The wall" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.TrackGenre" id="metalTGenre">
+		<property name="genre" value="metal" />
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.TrackGenre" id="rockTGenre">
+		<property name="genre" value="rock" />
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.TrackGenre" id="stupidTGenre">
+		<property name="genre" value="stupid" />
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.AlbumGenre" id="metalAGenre">
+		<property name="genre" value="metal" />
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.AlbumGenre" id="rockAGenre">
+		<property name="genre" value="rock" />
+	</bean>
+	<bean class="com.redoddity.faml.model.mediagenres.AlbumGenre" id="stupidAGenre">
+		<property name="genre" value="stupid" />
+	</bean>
+
+	<bean name="trackDAO" class="com.redoddity.faml.model.daos.TrackDAO">
+		<property name="testData">
+			<set>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="1" />
+					<property name="title" value="Ciao" />
+					<property name="yr" value="1999" />
+					<property name="length" value="180" />
+					<property name="artist" ref="artist1" />
+					<property name="genre" ref="rockTGenre" />
+					<property name="lyrics" value="trullallero" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="2" />
+					<property name="title" value="Ciao ciao" />
+					<property name="yr" value="1900" />
+					<property name="length" value="99" />
+					<property name="genre" ref="stupidTGenre" />
+					<property name="artist" ref="artist2" />
+					<property name="lyrics" value="tarattata" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="3" />
+					<property name="title" value="hello" />
+					<property name="yr" value="1545" />
+					<property name="length" value="20" />
+					<property name="genre" ref="metalTGenre" />
+					<property name="artist" ref="artist3" />
+					<property name="lyrics" value="totatu" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="4" />
+					<property name="title" value="Say heo" />
+					<property name="yr" value="1200" />
+					<property name="length" value="300" />
+					<property name="genre" ref="metalTGenre" />
+					<property name="lyrics" value="helllo" />
+					<property name="artist" ref="artist1" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="5" />
+					<property name="title" value="caremelle" />
+					<property name="yr" value="1999" />
+					<property name="length" value="1" />
+					<property name="genre" ref="metalTGenre" />
+					<property name="lyrics" value="hipopopia" />
+					<property name="artist" ref="artist1" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="6" />
+					<property name="title" value="rtrjk" />
+					<property name="genre" ref="rockTGenre" />
+					<property name="yr" value="1999" />
+					<property name="length" value="110" />
+					<property name="lyrics" value="La canzone del capitano" />
+					<property name="artist" ref="artist1" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+	<bean name="personDAO" class="com.redoddity.faml.model.daos.PersonDAO">
+		<property name="testData">
+			<list>
+				<bean class="com.redoddity.faml.model.people.Photographer">
+					<property name="id" value="1" />
+					<property name="name" value="Pippo" />
+					<property name="lastname" value="Pippi" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Photographer">
+					<property name="id" value="2" />
+					<property name="name" value="Foobar" />
+					<property name="lastname" value="Baz" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Photographer">
+					<property name="id" value="3" />
+					<property name="name" value="Foo" />
+					<property name="lastname" value="Bar" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Artist">
+					<property name="id" value="4" />
+					<property name="name" value="Stian" />
+					<property name="lastname" value="Thorensen" />
+					<property name="stageName" value="Shagrath" />
+				</bean>				
+				<bean class="com.redoddity.faml.model.people.Artist">
+					<property name="id" value="5" />
+					<property name="name" value="Jgor" />
+					<property name="lastname" value="Ognibeni" />
+					<property name="stageName" value="Teufel" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Director">
+					<property name="id" value="6" />
+					<property name="name" value="George" />
+					<property name="lastname" value="Lucas" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Director">
+					<property name="id" value="7" />
+					<property name="name" value="Tuo" />
+					<property name="lastname" value="Nonno" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Person">
+					<property name="id" value="8" />
+					<property name="name" value="Aaa" />
+					<property name="lastname" value="Aaaba" />
+				</bean>
+				<bean class="com.redoddity.faml.model.people.Artist">
+					<property name="id" value="9" />
+					<property name="name" value="Amethista" />
+					<property name="lastname" value="Aeretica" />
+					<property name="stageName" value="Zsd" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="albumDAO" class="com.redoddity.faml.model.daos.AlbumDAO">
+		<property name="testData">
+			<set>
+				<bean class="com.redoddity.faml.model.Album">
+					<property name="id" value="1" />
+					<property name="title" value="Edward The Great" />
+					<property name="artist">
+						<bean class="com.redoddity.faml.model.people.ArtistGroup">
+						    <property name="id" value="666"/>
+							<property name="stageName" value="Iron Maiden" />
+						</bean>
+					</property>
+					<property name="genre" ref="metalAGenre" />
+					<property name="tracks">
+						<list>
+							<bean class="com.redoddity.faml.model.Track">
+								<property name="id" value="10" />
+								<property name="title" value="Run to the hills" />
+							</bean>
+							<bean class="com.redoddity.faml.model.Track">
+								<property name="id" value="11" />
+								<property name="title" value="Fear of the Dark" />
+							</bean>
+						</list>
+					</property>
+				</bean>
+				<bean class="com.redoddity.faml.model.Album">
+					<property name="id" value="2" />
+					<property name="title" value="caccolosa" />
+					<property name="artist" ref="artist2" />
+					<property name="genre" ref="stupidAGenre" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Album">
+					<property name="id" value="3" />
+					<property name="title" value="coccolosa" />
+					<property name="genre" ref="stupidAGenre" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Album">
+					<property name="id" value="4" />
+					<property name="title" value="Metal Jukebox" />
+					<property name="artist" ref="Halloween"/>											
+					<property name="genre" ref="metalAGenre" />
+					<property name="tracks">
+						<list>
+							<bean class="com.redoddity.faml.model.Track">
+								<property name="id" value="12" />
+								<property name="title" value="Mexican" />
+								<property name="artist" ref="Halloween"/>
+								<property name="length" value="3"/>																			
+							</bean>
+							<bean class="com.redoddity.faml.model.Track">
+								<property name="id" value="13" />
+								<property name="title" value="Hocus Pocus" />
+								<property name="artist" ref="Halloween"/>
+								<property name="length" value="4"/>
+							</bean>
+						</list>
+					</property>
+				</bean>
+				<bean class="com.redoddity.faml.model.Album">
+					<property name="id" value="5" />
+					<property name="title" value="Use your illusion II" />
+					<property name="artist" ref="artist2" />
+					<property name="genre" ref="rockAGenre" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+	<bean name="mediaDAO" class="com.redoddity.faml.model.daos.MediaDAO">
+		<property name="media">
+			<list>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="10" />
+					<property name="title" value="Run to the hills" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Track">
+					<property name="id" value="11" />
+					<property name="title" value="Fear of the Dark" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Movie">
+					<property name="id" value="13" />
+					<property name="title" value="Star Wars Episode I" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Movie">
+					<property name="id" value="14" />
+					<property name="title" value="The Crow" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Picture">
+					<property name="id" value="15" />
+					<property name="title" value="Sfocada" />
+				</bean>
+				<bean class="com.redoddity.faml.model.Picture">
+					<property name="id" value="16" />
+					<property name="title" value="Mossa" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="com.redoddity.faml.model.Image" name="morak">
+		<property name="uri" value="faml/Morak.jpg" />
+	</bean>
+</beans>

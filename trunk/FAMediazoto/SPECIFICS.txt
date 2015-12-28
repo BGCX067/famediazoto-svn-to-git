@@ -1,0 +1,63 @@
+*****************************************************************************************************************************************************************
+*								MEDIA LIBRARY		 									*
+*****************************************************************************************************************************************************************
+MEDIA
+ - id
+ - rating
+ - title
+ - related articles
+ - comments
+ - genre
+
+- Movie [MEDIA]                                		
+	- director                              	
+	- cast                                 		
+	- cover image                          		
+	- length                               		
+	- [preview - multimedia]       
+ 	- Release date                 
+	- Plot                       
+	
+- ALBUM [MEDIA]	    		   	           
+ - artist/group       	   
+ - Release date     
+ - cover image      
+ - tracks [multimedia file]	
+ - [tracks preview]
+
+- PICTURE [MEDIA]				
+ - photographer		
+ - tags			
+ - height
+ - width	
+ - size (KB)		
+ - # of downloads	
+
+- MULTIMEDIA FILE	
+  - title		
+  - file		
+  - type (video | mp3)	
+   - time of preview	
+
+
+
+
+GROUP:	                     PERSON: [+id]             ARTIST:			REGISTEREDUSER:			 
+	- title            	- picture             	- stage name		   - username			 
+	- genre	           	- name                	- album &| film		   - email
+	- artists       	- surname               - related articles         - password
+	- since            	- birth date					   - address [+cazzi e mazzi]
+	- pictures								   - rating
+	- logo
+	- related articles
+
+WRITER,DIRECTOR, EDITOR,PRODUCER [EXTENDS ARTIST]
+
+DONATE [paypal, credit cards, postepay, cheque] --> transazioni
+                            
+------------------------------------------------------------------------------------------------------
+- Internazionalizzazione
+------------------------------------------------------------------------------------------------------
+- implementazione dao
+- web application con spring (xml)
+	- Slideshow
